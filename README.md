@@ -1,19 +1,46 @@
-# Pharmacy Revenue Cycle Workflow
+﻿# Pharmacy Revenue Cycle Workflow
 
-Healthcare project for claim intake, denial classification, prior authorization status, and reimbursement reporting.
+A healthcare workflow project for classifying pharmacy claim denials and routing follow-up work to the correct operational queue.
 
-## Resume Fit
+## Stack
 
-- Regulated healthcare backend workflows.
-- Audit trail and exception queues.
-- Revenue cycle reporting APIs.
+Python, healthcare revenue cycle, claim routing
 
-## Toolchain
+## Problem
 
-Python is not installed in this workspace, so this project is implementation-ready but not locally verified here.
+Revenue cycle teams need consistent handling for prior authorizations, eligibility issues, coding errors, and manual review exceptions.
 
-## Production Next Steps
+## Architecture
 
-- Add claim lifecycle API.
+- claim_workflow.py maps denial reason codes to operational queues.
+- Tests document prior authorization routing behavior.
+- The domain is framework-light and ready for API or worker integration.
+
+## Implemented Production Readiness
+
+- CI compiles application and test modules.
+- Routing outcomes use stable queue names.
+- Denial classification is centralized for auditability.
+
+## Run And Test
+
+```powershell
+python -m compileall app tests
+```
+
+## Quality Gates
+
+- Project-specific GitHub Actions workflow included under .github/workflows/ci.yml.
+- Generated build outputs and dependency folders are excluded through .gitignore.
+- Tests and validation commands are intentionally small enough to run during code review.
+
+## Production Extension Points
+
+- Add claim lifecycle APIs.
 - Add queue workers for denial follow-up.
 - Add compliance export reports.
+
+## Repository Hygiene
+
+This repository contains original portfolio code only. It does not include employer source code, private resumes, generated binaries, local credentials, or large media files.
+
